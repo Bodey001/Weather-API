@@ -46,7 +46,7 @@ exports.getWeatherData = async (req, res) => {
         return res.status(200).json({message: `Weather data from ${date1} till ${date2}`, forecastData});
 
     } catch (error) {
-        console.error('Error fetching weather date from Visual Crossing: ', error);
+        console.error('Error fetching weather data from Visual Crossing: ', error);
         res.status(500).json({ error: "Failed to fetch current weather data." });
     };
 };
