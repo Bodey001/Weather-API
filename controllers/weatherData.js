@@ -9,12 +9,18 @@ const visualCrossingBaseUrl =
 
 //GET Weather by location and date
 exports.getWeatherData = async (req, res) => {
-    const { location, date1, date2 } = req.body;
+    const { location, date1, date2, last30days } = req.body;
         
     try {
       if (!location) {
         return res.status(400).json({ message: "Unknown Location" });
-        };
+      };
+      if (last30days === "true") {
+        const visualCrossingUrl = `${visualCrossingBaseUrl}/${location}/last30days?key=${visualCrossingApiKey}`;
+        const response = await axios.get(visualCrossingUrl);
+        const forecastData = response.data;
+        return res.status(200).json({ message: 'Weather data for last 30 days:', forecastData });
+      };
       if (!date1) {
         const visualCrossingUrl = `${visualCrossingBaseUrl}/${location}?key=${visualCrossingApiKey}`;
         const response = await axios.get(visualCrossingUrl);
