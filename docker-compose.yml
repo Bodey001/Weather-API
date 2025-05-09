@@ -1,0 +1,33 @@
+services:
+  #Define the service for the Node.js app
+  backend:
+    image: weather-backend
+    build: #Build an image from the current directory using the dockerfile
+      context: .
+      dockerfile: backend.dockerfile
+    container_name: backend
+    ports:
+      - "3000:3000" #Map host port 3000 to container port 3000
+    volumes:
+      - .:/app #Map the current directory as a volume in the container
+    environment: #Set the environment variables
+      - "NODE_ENV=development"
+      - "REDIS_HOST=redis"
+      - "REDIS_PORT=6379"
+    networks:
+      - weather-network
+    depends_on:
+      - redis #Ensures the 'redis' service is started before the app service
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    container_name: redis
+    command: redis-server --requirepass redis4weatherapi
+    networks:
+      - weather-network
+
+networks:
+  weather-network:
+    external: true # Use the existing 'weather-network'

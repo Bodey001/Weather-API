@@ -10,6 +10,9 @@ COPY package*.json ./
 #Install application dependencies
 RUN npm install
 
+#Install nodemon gloabally
+RUN npm install -g nodemon
+
 #Copy the rest of the app into the container
 COPY . .
 
@@ -19,4 +22,4 @@ ENV PORT=3000
 EXPOSE 3000
 
 #Run your node.js application
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
