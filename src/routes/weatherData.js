@@ -5,7 +5,7 @@ const weatherDataController = require("../controllers/weatherData.js");
 /**
 * @swagger
 * /weather/forecast:
-*      post:
+*   post:
 *          summary: Post some parameters to retrieve weather forecasts
 *          requestBody:
 *              required: true
