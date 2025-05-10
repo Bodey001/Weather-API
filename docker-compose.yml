@@ -24,7 +24,7 @@ services:
     ports:
       - "6379:6379"
     container_name: redis
-    command: redis-server --requirepass redis4weatherapi
+    command: redis-server --requirepass your-redis-password
     networks:
       - weather-network
 
