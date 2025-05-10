@@ -74,8 +74,11 @@ REDIS_PASSWORD=your-redis-container-password
 
 ## API Endpoints
 
-- Swagger Documentation available at http://localhost:[PORT]/api-docs
-
+- [POST] posts a requestBody to retrieve info
+    location, 
+    date1, 
+    date2, 
+    last30days = true or false
 ## Error Handling
 
 The API follows standard HTTP status codes to indicate the outcome of requests
