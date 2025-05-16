@@ -29,5 +29,4 @@ services:
       - weather-network
 
 networks:
-  weather-network:
-    external: true # Use the existing 'weather-network'
+  weather-network:    #Creates a new network
