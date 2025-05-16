@@ -24,9 +24,8 @@ services:
     ports:
       - "6379:6379"
     container_name: redis
-    command: redis-server --requirepass your-redis-container-password
     networks:
       - weather-network
 
 networks:
-  weather-network:    #Creates a new network
+  weather-network: #Creates a new network
